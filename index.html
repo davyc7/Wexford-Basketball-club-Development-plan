@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wexford Basketball Club - Development Plans (U12-U18)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-purple: #7B2CBF;
+            --secondary-purple: #9D4EDD;
+            --dark-purple: #5A189A;
+            --light-purple: #C77DFF;
+            --wexford-amber: #FFC107;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(91, 24, 154, 0.7), rgba(123, 44, 191, 0.8)), 
+                              url('https://page.gensparksite.com/v1/base64_upload/2509b135ee03ab8e75e24e1febd5c152');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 50%, var(--light-purple) 100%);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(123, 44, 191, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(123, 44, 191, 0.3);
+        }
+
+        .collapsible-header {
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .collapsible-header:hover {
+            background: linear-gradient(135deg, var(--dark-purple), var(--primary-purple));
+            transform: translateY(-2px);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .collapsible-content.active {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .objectives-banner {
+            background: linear-gradient(90deg, var(--light-purple), rgba(199, 125, 255, 0.3));
+            border-left: 5px solid var(--primary-purple);
+        }
+
+        .age-tab {
+            background: var(--light-purple);
+            color: var(--dark-purple);
+            transition: all 0.3s ease;
+        }
+
+        .age-tab.active {
+            background: var(--primary-purple);
+            color: white;
+        }
+
+        .skill-tile {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(199, 125, 255, 0.1));
+            border: 2px solid var(--light-purple);
+        }
+
+        .drill-tile {
+            background: linear-gradient(135deg, rgba(123, 44, 191, 0.1), rgba(157, 78, 221, 0.1));
+            border: 2px solid var(--secondary-purple);
+        }
+
+        .dos-tile {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+            border-left: 5px solid #22c55e;
+        }
+
+        .donts-tile {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+            border-left: 5px solid #ef4444;
+        }
+
+        .logo {
+            max-height: 120px;
+            width: auto;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .expand-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+         {
+            body {
+                background: white !important;
+            }
+            .hero-section {
+                background-attachment: scroll !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center justify-center relative">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <img src="https://page.gensparksite.com/jupyter/toolu_01Dsb8sdNPxVwKDEoRCUMUAE/output/wexford_blazers_transparent.png" 
+                     alt="Wexford Blazers Logo" class="logo mx-auto mb-6">
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+                Development Plans
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-white mb-8 opacity-90">
+                Building Champions Through Fundamentals
+            </h2>
+            
+            <!-- Age Group Navigation -->
+            <div class="flex justify-center space-x-4 mb-8">
+                <button class="age-tab active px-6 py-3 rounded-lg font-bold text-lg transition-all" onclick="switchAge('u12')">U12</button>
+                <button class="age-tab px-6 py-3 rounded-lg font-bold text-lg transition-all" onclick="switchAge('u14')">U14</button>
+                <button class="age-tab px-6 py-3 rounded-lg font-bold text-lg transition-all" onclick="switchAge('u16')">U16</button>
+                <button class="age-tab px-6 py-3 rounded-lg font-bold text-lg transition-all" onclick="switchAge('u18')">U18</button>
+            </div>
+            
+            <div class="text-white text-lg opacity-80">
+                Purpose: To outline a comprehensive development framework for coaching core fundamentals and progression
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="bg-white">
+        <!-- Program Objectives -->
+        <section class="py-16 bg-gradient-to-b from-purple-50 to-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12" style="color: var(--primary-purple);">Program Objectives</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                    <div class="card p-6 text-center">
+                        <div class="text-4xl mb-4" style="color: var(--primary-purple);"><i class="fas fa-trophy"></i></div>
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--dark-purple);">Skill Refinement</h3>
+                        <p class="text-gray-700">Improve fundamental skills while introducing more advanced techniques</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="text-4xl mb-4" style="color: var(--primary-purple);"><i class="fas fa-brain"></i></div>
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--dark-purple);">Game IQ</h3>
+                        <p class="text-gray-700">Develop understanding of offensive and defensive concepts</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="text-4xl mb-4" style="color: var(--primary-purple);"><i class="fas fa-running"></i></div>
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--dark-purple);">Physical Conditioning</h3>
+                        <p class="text-gray-700">Enhance agility, strength, and endurance</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="text-4xl mb-4" style="color: var(--primary-purple);"><i class="fas fa-users"></i></div>
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--dark-purple);">Team Dynamics</h3>
+                        <p class="text-gray-700">Foster communication, teamwork, and unselfish play</p>
+                    </div>
+                    
+                    <div class="card p-6 text-center lg:col-span-1 md:col-span-2 lg:col-start-2">
+                        <div class="text-4xl mb-4" style="color: var(--primary-purple);"><i class="fas fa-heart"></i></div>
+                        <h3 class="text-xl font-bold mb-3" style="color: var(--dark-purple);">Mental Toughness</h3>
+                        <p class="text-gray-700">Build resilience, focus, and confidence</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Fundamentals -->
+        <section class="py-16" id="fundamentals">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12" style="color: var(--primary-purple);">Core Fundamentals</h2>
+                
+                <!-- Ball Handling & Dribbling -->
+                <div class="mb-8">
+                    <div class="collapsible-header p-6 flex justify-between items-center" onclick="toggleCollapse('dribbling')">
+                        <h3 class="text-2xl font-bold flex items-center">
+                            <span class="mr-3">🏀</span> Ball Handling & Dribbling
+                        </h3>
+                        <i class="fas fa-plus expand-icon text-2xl" id="dribbling-icon"></i>
+                    </div>
+                    
+                    <div class="collapsible-content" id="dribbling-content">
+                        <div class="p-6">
+                            <!-- Objectives Banner -->
+                            <div class="objectives-banner p-4 rounded-lg mb-6">
+                                <h4 class="text-xl font-bold mb-2" style="color: var(--dark-purple);">Objectives</h4>
+                                <p class="text-lg" style="color: var(--primary-purple);">Improve control, speed, change of direction, and dribbling under pressure</p>
+                            </div>
+                            
+                            <!-- Skills and Drills -->
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div class="skill-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4" style="color: var(--primary-purple);"><i class="fas fa-star mr-2"></i>Key Skills</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Crossover, Behind-the-Back, Spin Moves: Use to change direction and create space</li>
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Advanced Dribble Combos: Combine moves to beat defenders</li>
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Ball Protection: Shield the ball with off-hand and body positioning</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="drill-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4" style="color: var(--primary-purple);"><i class="fas fa-dumbbell mr-2"></i>Drills</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Cone Dribble Series: Incorporate combos (crossover to behind-the-back)</li>
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Pressure Dribbling: Partner or coach applies light pressure</li>
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>2-Ball Dribbling: Improve coordination and hand strength</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Do's and Don'ts -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="dos-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4 text-green-700"><i class="fas fa-check mr-2"></i>Do's</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-green-800"><i class="fas fa-check-circle mr-2 mt-1"></i>Use fingertips, not palms</li>
+                                        <li class="flex items-start text-green-800"><i class="fas fa-check-circle mr-2 mt-1"></i>Stay low with bent knees</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="donts-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4 text-red-700"><i class="fas fa-times mr-2"></i>Don'ts</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-red-800"><i class="fas fa-times-circle mr-2 mt-1"></i>Avoid reaching and committing cheap fouls</li>
+                                        <li class="flex items-start text-red-800"><i class="fas fa-times-circle mr-2 mt-1"></i>Don't focus solely on dominant hand dribbling</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shooting -->
+                <div class="mb-8">
+                    <div class="collapsible-header p-6 flex justify-between items-center" onclick="toggleCollapse('shooting')">
+                        <h3 class="text-2xl font-bold flex items-center">
+                            <span class="mr-3">🎯</span> Shooting
+                        </h3>
+                        <i class="fas fa-plus expand-icon text-2xl" id="shooting-icon"></i>
+                    </div>
+                    
+                    <div class="collapsible-content" id="shooting-content">
+                        <div class="p-6">
+                            <!-- Objectives Banner -->
+                            <div class="objectives-banner p-4 rounded-lg mb-6">
+                                <h4 class="text-xl font-bold mb-2" style="color: var(--dark-purple);">Objectives</h4>
+                                <p class="text-lg" style="color: var(--primary-purple);">Build consistency and range while maintaining proper form</p>
+                            </div>
+                            
+                            <!-- Skills and Drills -->
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div class="skill-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4" style="color: var(--primary-purple);"><i class="fas fa-star mr-2"></i>Key Skills</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Form Shooting: Reinforce BEEF principles (Balance, Eyes, Elbow, Follow-Through)</li>
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Catch-and-Shoot: Develop quick release and footwork</li>
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Off-the-Dribble Shooting: Improve accuracy after a dribble move</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="drill-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4" style="color: var(--primary-purple);"><i class="fas fa-dumbbell mr-2"></i>Drills</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Form Shooting Close to the Rim: Focus on muscle memory</li>
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Spot-Up Shooting: Repetition from multiple spots</li>
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Pull-Up Jumpers: After dribble moves</li>
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Game Scenario Shooting: Simulate in-game shots (off screens, fast breaks)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Do's and Don'ts -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="dos-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4 text-green-700"><i class="fas fa-check mr-2"></i>Do's</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-green-800"><i class="fas fa-check-circle mr-2 mt-1"></i>Develop a consistent routine before each shot</li>
+                                        <li class="flex items-start text-green-800"><i class="fas fa-check-circle mr-2 mt-1"></i>Emphasize following through and holding the pose</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="donts-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4 text-red-700"><i class="fas fa-times mr-2"></i>Don'ts</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-red-800"><i class="fas fa-times-circle mr-2 mt-1"></i>Avoid rushed shots</li>
+                                        <li class="flex items-start text-red-800"><i class="fas fa-times-circle mr-2 mt-1"></i>Don't ignore shooting mechanics under pressure</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passing & Catching -->
+                <div class="mb-8">
+                    <div class="collapsible-header p-6 flex justify-between items-center" onclick="toggleCollapse('passing')">
+                        <h3 class="text-2xl font-bold flex items-center">
+                            <span class="mr-3">🤝</span> Passing & Catching
+                        </h3>
+                        <i class="fas fa-plus expand-icon text-2xl" id="passing-icon"></i>
+                    </div>
+                    
+                    <div class="collapsible-content" id="passing-content">
+                        <div class="p-6">
+                            <!-- Objectives Banner -->
+                            <div class="objectives-banner p-4 rounded-lg mb-6">
+                                <h4 class="text-xl font-bold mb-2" style="color: var(--dark-purple);">Objectives</h4>
+                                <p class="text-lg" style="color: var(--primary-purple);">Enhance accuracy and decision-making</p>
+                            </div>
+                            
+                            <!-- Skills and Drills -->
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div class="skill-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4" style="color: var(--primary-purple);"><i class="fas fa-star mr-2"></i>Key Skills</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Chest Pass, Bounce Pass, Overhead Pass: Maintain accuracy and power</li>
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Passing on the Move: Deliver accurate passes while in motion</li>
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Pass Fakes: Create openings by misleading defenders</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="drill-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4" style="color: var(--primary-purple);"><i class="fas fa-dumbbell mr-2"></i>Drills</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Partner Passing with Movement: Chest and bounce passes while cutting</li>
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Full-Court Passing Drills: Emphasize long, accurate throws</li>
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Game Scenario Passing: Practice passing out of double teams</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Do's and Don'ts -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="dos-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4 text-green-700"><i class="fas fa-check mr-2"></i>Do's</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-green-800"><i class="fas fa-check-circle mr-2 mt-1"></i>Keep passes crisp and on target</li>
+                                        <li class="flex items-start text-green-800"><i class="fas fa-check-circle mr-2 mt-1"></i>Communicate when passing</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="donts-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4 text-red-700"><i class="fas fa-times mr-2"></i>Don'ts</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-red-800"><i class="fas fa-times-circle mr-2 mt-1"></i>Avoid one-handed or off-balance passes</li>
+                                        <li class="flex items-start text-red-800"><i class="fas fa-times-circle mr-2 mt-1"></i>Don't force passes through traffic</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Defense -->
+                <div class="mb-8">
+                    <div class="collapsible-header p-6 flex justify-between items-center" onclick="toggleCollapse('defense')">
+                        <h3 class="text-2xl font-bold flex items-center">
+                            <span class="mr-3">🛡️</span> Defense
+                        </h3>
+                        <i class="fas fa-plus expand-icon text-2xl" id="defense-icon"></i>
+                    </div>
+                    
+                    <div class="collapsible-content" id="defense-content">
+                        <div class="p-6">
+                            <!-- Objectives Banner -->
+                            <div class="objectives-banner p-4 rounded-lg mb-6">
+                                <h4 class="text-xl font-bold mb-2" style="color: var(--dark-purple);">Objectives</h4>
+                                <p class="text-lg" style="color: var(--primary-purple);">Build solid individual and team defense</p>
+                            </div>
+                            
+                            <!-- Skills and Drills -->
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div class="skill-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4" style="color: var(--primary-purple);"><i class="fas fa-star mr-2"></i>Key Skills</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Stance and Footwork: Stay low and balanced</li>
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Help Defense: Be aware of when to rotate and cover</li>
+                                        <li class="flex items-start"><i class="fas fa-basketball-ball mr-2 mt-1" style="color: var(--secondary-purple);"></i>Closeouts: Contest shots without fouling</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="drill-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4" style="color: var(--primary-purple);"><i class="fas fa-dumbbell mr-2"></i>Drills</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>1-on-1 Defense Drills: Focus on containing the ball handler</li>
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Shell Drill: Teach team defensive rotations</li>
+                                        <li class="flex items-start"><i class="fas fa-circle mr-2 mt-1" style="color: var(--secondary-purple);"></i>Closeout and Contest Drills: Close distance while staying balanced</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Do's and Don'ts -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="dos-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4 text-green-700"><i class="fas fa-check mr-2"></i>Do's</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-green-800"><i class="fas fa-check-circle mr-2 mt-1"></i>Stay disciplined and don't gamble</li>
+                                        <li class="flex items-start text-green-800"><i class="fas fa-check-circle mr-2 mt-1"></i>Maintain active hands and quick feet</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="donts-tile p-6 rounded-lg">
+                                    <h4 class="text-xl font-bold mb-4 text-red-700"><i class="fas fa-times mr-2"></i>Don'ts</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start text-red-800"><i class="fas fa-times-circle mr-2 mt-1"></i>Avoid reaching and committing cheap fouls</li>
+                                        <li class="flex items-start text-red-800"><i class="fas fa-times-circle mr-2 mt-1"></i>Don't lose focus off the ball</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="gradient-bg text-white py-12">
+            <div class="container mx-auto px-6 text-center">
+                <img src="https://page.gensparksite.com/jupyter/toolu_01Dsb8sdNPxVwKDEoRCUMUAE/output/wexford_blazers_transparent.png" 
+                     alt="Wexford Blazers Logo" class="h-16 mx-auto mb-4 opacity-90">
+                <h3 class="text-2xl font-bold mb-4">Wexford Basketball Club</h3>
+                <p class="text-lg opacity-90 mb-4">Building Champions Through Fundamentals</p>
+                <p class="opacity-75">Development Plan Framework - Ages 12-18</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function toggleCollapse(section) {
+            const content = document.getElementById(section + '-content');
+            const icon = document.getElementById(section + '-icon');
+            
+            content.classList.toggle('active');
+            
+            if (content.classList.contains('active')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+                icon.classList.add('rotated');
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+                icon.classList.remove('rotated');
+            }
+        }
+
+        function switchAge(age) {
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.age-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Here you could add logic to show different content for different ages
+            console.log('Switched to age group:', age);
+        }
+
+        // Add smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add keyboard accessibility for collapsible sections
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (e.target.classList.contains('collapsible-header')) {
+                    e.preventDefault();
+                    e.target.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDsnJQLd51bFRROrwuydr7NGSYudsB0fLbcTKwPb%2FLh%2Bcy5YgmElETdJPMs8hbrxtGNTA6S%2BFpRQzC%2FW0tuzyLat1OQxcpMY5X4ORhoWya03KoOuWiu4HV0o0LjoUBZT0tc00jjHEx7GT2t%2BHJ2lz%2BinwbXsFinOPxI1pUrCRVceqdWqRK34O3u5MTLqj8ZzjoRaZ6eK02tLzG%2Bkv0cXVyf%2B0w1WF4CDPcGqUAq%2B%2FFgX%2FFnq2n9QJfT2ouXSiTWesa3AnRWTLtPrj3lLQnsDci29e8qNKS6GgQ74gGB26iXdS6HYzWfGE%2BPu7FSRnUVtTUFEXJv2wUcEgI54tJA%2Fkl%2BWBhvSvAZpAPbU8DGBul%2Fb%2BR0a5%2FyIzkNlhv5JUSJFOTAY48qrDUG62POdDFTycCxoXSyAfjvqJOIU6ZIfKES%2F1sZsuGwiNOBvKleWDlAHhbg9x2kTFtBOV65t4ExWi9M%2FdQ3gydg%2Bennj%2BayQHf0RXFh%2BuuNmCz5N5Ticg85TFJx7cpJqG2wPecM5fXL6m1Nc%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDsnJQLd51bFRROrwuydr7NGSYudsB0fLbcTKwPb/Lh+cy5YgmElETdJPMs8hbrxtGNTA6S+FpRQzC/W0tuzyLat1OQxcpMY5X4ORhoWya03KoOuWiu4HV0o0LjoUBZT0tc00jjHEx7GT2t+HJ2lz+inwbXsFinOPxI1pUrCRVceqdWqRK34O3u5MTLqj8ZzjoRaZ6eK02tLzG+kv0cXVyf+0w1WF4CDPcGqUAq+/FgX/Fnq2n9QJfT2ouXSiTWesa3AnRWTLtPrj3lLQnsDci29e8qNKS6GgQ74gGB26iXdS6HYzWfGE+Pu7FSRnUVtTUFEXJv2wUcEgI54tJA/kl+WBhvSvAZpAPbU8DGBul/b+R0a5/yIzkNlhv5JUSJFOTAY48qrDUG62POdDFTycCxoXSyAfjvqJOIU6ZIfKES/1sZsuGwiNOBvKleWDlAHhbg9x2kTFtBOV65t4ExWi9M/dQ3gydg+ennj+ayQHf0RXFh+uuNmCz5N5Ticg85TFJx7cpJqG2wPecM5fXL6m1Nc=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
